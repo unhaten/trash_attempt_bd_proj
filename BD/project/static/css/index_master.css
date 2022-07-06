@@ -1,0 +1,35 @@
+.container_color {
+    text-align: center;
+    color: #FFA000;
+}
+
+
+/* #cont_color {
+    color: blue
+} */
+
+#index_art {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 50%;
+}
+
+#button_index {
+    background-color: #014589;
+    border: none;
+    color: rgb(200, 201, 199);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 16px;
+}
+
+body {
+    border: 5px dotted #FFA000;
+    /* width: 50%; */
+    background-color: #911E42;
+}

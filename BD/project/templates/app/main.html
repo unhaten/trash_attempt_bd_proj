@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href='{% static 'css/main_master.css' %}'>
+  </head>
+  <body>
+    <h1>Here are all Video Libraries:</h1>
+    <span id="dots"></span>
+    <span id="more">
+      {% if shop_name %}
+      <ol>
+        {% for library in shop_name %}
+        <li>Video Library Info</li>
+        <ul>
+          <li>Name : {{library.shop_name}}</li>
+          <li>Adress : {{library.adress}}</li>
+          {% comment %} <button id="btn_goto" onclick="">Select</button> {% endcomment %}
+        </ul>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p>ERROR</p>
+      {% endif %}
+    </span>
+    <button id="btn_more" onclick="readMore()">Show Info</button>
+    <h1>Additional Settings</h1>
+    
+    <form action="/create_view">
+      <input
+        type="submit"
+        id="btn_delete"
+        value="Add info"
+      />
+    </form>
+    <form action="/list_view">
+      <input
+        type="submit"
+        id="btn_delete"
+        value="Whole info"
+      />
+    </form>
+    {% comment %} <span><button id="btn_delete" onclick="">Delete Info</button></span> {% endcomment %}
+    <p></p>
+
+    {% comment %} {% if shop_name %}
+    <select name="shops" id="shop_select" class='box'>
+      <option value="" disabled selected id='blank_option' onchange='revealMore()' name='select_option'></option>
+      {% for library in shop_name %}
+      <option id='library_element'>{{library.shop_name}}</option>
+      {% endfor %}
+    </select>
+    <p></p>
+    <input type="text" id='text_area'>
+    {% else %}
+      <p>ERROR</p>
+    {% endif %}
+    <p></p>
+    <button type="button" onclick='searchMore()'>Confrim</button>
+    <table>
+      <tr>
+        <th>Adress</th>
+      </tr>
+      <tr>
+          <td id='adress'>None</td>
+          {% if adress %}
+            {% for adress in adress %}
+              <td>{{adress.adress}}</td>
+            {% endfor %}
+          {% endif %}
+      </tr>
+    </table>   {% endcomment %}
+    <script src={% static 'js/show_more.js' %}></script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href='{% static 'css/list_view_master.css' %}' />
+  </head>
+  <body>
+    <div class="main">
+      <form action="/main"> 
+        <input
+          type="submit"
+          class="btn_no"
+          value="Go back"
+        />
+      </form>
+      {% for data in library_dataset %}
+      ----------------------------------------
+      Shop name: {{ data.shop_name }} <br />
+      Adress: {{ data.adress }} <br />
+      
+      <td>
+        <a href="{% url 'update_shop' data.id  %}">
+          <button type="button" class="btn">Edit Shop Details</button>
+        </a>
+        <a href="{% url 'delete_shop' data.id  %}">
+          <button type="button" class="btn">Delete Shop</button>
+        </a>
+      </td>
+      
+      {% for attendance in data.attendance_set.all %}
+      <br>
+      Attendance - {{ attendance.attendance_amount }}
+      <td>
+        <a href="{% url 'update_attendance' attendance.id  %}">
+          <button type="button" class="btn">Edit Attendance Details</button>
+        </a>
+        <a href="{% url 'delete_attendance' attendance.id  %}">
+          <button type="button" class="btn">Delete Attendance</button>
+        </a>
+      </td>
+      {% endfor %}
+      
+      {% for income in data.income_set.all %}
+      <br>
+      Income - {{ income.income_amount }}
+      <td>
+        <a href="{% url 'update_income' income.id  %}">
+          <button type="button" class="btn">Edit Income Details</button>
+        </a>
+        <a href="{% url 'delete_income' income.id  %}">
+          <button type="button" class="btn">Delete Income</button>
+        </a>
+      </td>
+      {% endfor %}
+      <br>
+      Equipment:
+      <br>
+      {% for equipment in data.equipment_set.all %}
+      {{ equipment.equipment_name }}
+      <td>
+        <a href="{% url 'update_equipment' equipment.id  %}">
+          <button type="button" class="btn">Edit Equipment Details</button>
+        </a>
+        <a href="{% url 'delete_equipment' equipment.id  %}">
+          <button type="button" class="btn">Delete Equipment</button>
+        </a>
+      </td>
+      {% endfor %}
+      <br>
+      {% comment %} {% comment %} Genres:
+      <br> 
+      {% for genre in data.genre_set.all %}
+      <ul><li>{{ genre.genre_name }}
+        <td>
+          <a href="{% url 'update_genre' genre.id  %}">
+            <button type="button" class="btn">Edit Genre Details</button>
+          </a>
+          <a href="{% url 'delete_genre' genre.id  %}">
+            <button type="button" class="btn">Delete Genre</button>
+          </a>
+        </td></ul></li> {% endcomment %} {% endcomment %}
+
+        {% for film in genre.films_set.all %}
+        Films in this genre:
+        {{ film.film_name }}
+          <td>
+            <a href="{% url 'update_film' film.id  %}">
+              <button type="button" class="btn">Edit Film Details</button>
+            </a>
+            <a href="{% url 'delete_film' film.id  %}">
+              <button type="button" class="btn">Delete Film</button>
+            </a>
+          </td>
+
+          {% comment %} {% for film_review in film.film_review_set.all %}
+          Score of the film: {{ film_review.review_score }}
+          {% endfor %} {% endcomment %}
+        {% endfor %}
+
+      {% endfor %}
+      <br>
+      Staff that work in the shop:
+      <br />
+      <br />
+      {% for staff in data.staff_set.all %}
+      <ul>
+        <li>{{ staff.staff_name }}</li>
+        
+        <td>
+          <a href="{% url 'update_staff' staff.id  %}">
+            <button type="button" class="btn">Edit User Details</button>
+          </a>
+          <a href="{% url 'delete_staff' staff.id  %}">
+            <button type="button" class="btn">Delete Staff</button>
+          </a>
+        </td>
+      </ul>
+
+      Rank of different workers:
+      {% for rank in staff.rank_set.all %} 
+      <ul>
+        <li>{{ rank.rank_name }}</li>
+        <td>
+        <a href="{% url 'update_rank' rank.id  %}">
+          <button type="button" class="btn">Edit Rank Details</button>
+        </a>
+        <a href="{% url 'delete_rank' rank.id  %}">
+          <button type="button" class="btn">Delete Rank</button>
+        </a>
+      </td></ul>
+
+
+      {% for payment in rank.payment_set.all %} 
+      
+      Payment details: {{ payment.payment_amount}}
+      <td>
+        <a href="{% url 'update_payment' payment.id  %}">
+          <button type="button" class="btn">Edit Payment Details</button>
+        </a>
+        <a href="{% url 'delete_payment' payment.id  %}">
+          <button type="button" class="btn">Delete Payment</button>
+        </a>
+      </td></ul>
+
+      
+      
+      {% endfor %}
+      
+      <br>
+      {% endfor %}
+      
+      {% endfor %}
+      <br>
+      
+      {% endfor %}
+      
+      
+      {% comment %} {% for data in staff_dataset %} {{ data.age }}
+      <br />
+      <hr />
+
+      {% endfor %} {% endcomment %}
+    </div>
+    <script src={% static 'js/show_more.js' %}></script>
+  </body>
+</html>

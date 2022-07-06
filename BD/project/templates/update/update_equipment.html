@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/update_view_master.css' %}" />
+  </head>
+  <body>
+    <div class="main">
+      <form method="POST">
+        {% csrf_token %} {{ form_equipment.as_p }}
+
+        <input type="submit" value="Update" class="btn" />
+      </form>
+      <form action="/list_view/">
+        <input type="submit" class="btn_no" value="Cancel" />
+      </form>
+    </div>
+  </body>
+</html>

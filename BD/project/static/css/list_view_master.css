@@ -1,0 +1,28 @@
+body {
+    color: #FFA000;
+    background-color: #911E42;
+}
+
+.btn {
+    background-color: #014589;
+    border: none;
+    color: rgb(200, 201, 199);
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.btn_no {
+    background-color: #b6ab0c;
+    border: none;
+    color: rgb(9, 18, 0);
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
